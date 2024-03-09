@@ -7,8 +7,6 @@ class MessageStore {
   constructor() {
     this.listeners = new Set();
 
-    this.memberId = 1;
-
     this.socket = null;
     this.client = null;
     this.connected = false;
@@ -78,8 +76,7 @@ class MessageStore {
       client: this.client,
       type,
       messageToSend: {
-        roomId: this.currentRoomId,
-        memberId: this.memberId,
+        roomShortUuid: this.currentRoomId,
         message,
       },
     });
