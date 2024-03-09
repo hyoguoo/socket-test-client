@@ -5,6 +5,8 @@ export const chatType = {
   MESSAGE: 'message',
   READY: 'ready',
   UNREADY: 'unready',
+  CHANGE_HOST: 'change-host',
+  START_CODING: 'start-coding',
 };
 export const pubPrefix = '/publication';
 export const subPrefix = '/subscription';
