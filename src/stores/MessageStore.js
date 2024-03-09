@@ -134,6 +134,12 @@ class MessageStore {
         value: `User ${message.memberId} Start Coding (${message.timestamp})`,
       };
     }
+    if (message.type === chatType.END_CODING) {
+      return {
+        id: message.id,
+        value: `User ${message.memberId} End Coding (${message.timestamp})`,
+      };
+    }
     return {
       id: message.id,
       value: 'Unknown Type Message',

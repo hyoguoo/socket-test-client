@@ -7,6 +7,7 @@ export const chatType = {
   UNREADY: 'unready',
   CHANGE_HOST: 'change-host',
   START_CODING: 'start-coding',
+  END_CODING: 'end-coding',
 };
 export const pubPrefix = '/publication';
 export const subPrefix = '/subscription';
