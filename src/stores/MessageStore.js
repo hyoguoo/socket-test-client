@@ -7,7 +7,7 @@ class MessageStore {
   constructor() {
     this.listeners = new Set();
 
-    this.userId = Math.random().toString(36).substring(2, 9);
+    this.memberId = 1;
 
     this.socket = null;
     this.client = null;
@@ -78,7 +78,7 @@ class MessageStore {
       type,
       messageToSend: {
         roomId: this.currentRoomId,
-        userId: this.userId,
+        memberId: this.memberId,
         message,
       },
     });
@@ -97,19 +97,19 @@ class MessageStore {
     if (message.type === chatType.ENTER) {
       return {
         id: message.id,
-        value: `User ${message.userId} Enter (${message.timestamp})`,
+        value: `User ${message.memberId} Enter (${message.timestamp})`,
       };
     }
     if (message.type === chatType.QUIT) {
       return {
         id: message.id,
-        value: `User ${message.userId} Quit (${message.timestamp})`,
+        value: `User ${message.memberId} Quit (${message.timestamp})`,
       };
     }
     if (message.type === chatType.MESSAGE) {
       return {
         id: message.id,
-        value: `${message.userId}: ${message.value} (${message.timestamp})`,
+        value: `${message.memberId}: ${message.value} (${message.timestamp})`,
       };
     }
     return {

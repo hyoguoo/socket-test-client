@@ -1,8 +1,14 @@
-import { pubPrefix } from '../config';
+import { bearerToken, pubPrefix } from '../config';
 
 class MessageService {
   sendMessage({ client, type, messageToSend }) {
-    client.send(`${pubPrefix}/chat/${type}`, {}, JSON.stringify(messageToSend));
+    client.send(
+      `${pubPrefix}/chat/${type}`,
+      {
+        Authorization: bearerToken,
+      },
+      JSON.stringify(messageToSend),
+    );
   }
 }
 
