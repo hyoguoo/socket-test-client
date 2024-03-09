@@ -11,34 +11,34 @@ class MessageStore {
     this.client = null;
     this.connected = false;
 
-    this.roomIndices = ['room1', 'room2', 'room3'];
+    this.roomIndices = ['c6574c0g', 'c6574c0h', 'c6574c0i'];
 
-    this.currentRoomId = 0;
+    this.currentRoomShortUuid = 0;
     this.messageEntered = '';
 
     this.messageLogs = [];
   }
 
-  connect(roomId) {
+  connect(roomShortUuid) {
     this.socket = new SockJS(`${baseUrl}`);
     this.client = Stomp.over(this.socket);
 
-    this.currentRoomId = roomId;
+    this.currentRoomShortUuid = roomShortUuid;
 
-    this.subscribeMessageBroker(this.currentRoomId);
+    this.subscribeMessageBroker(this.currentRoomShortUuid);
 
     this.connected = true;
     this.publish();
   }
 
-  subscribeMessageBroker(roomId) {
+  subscribeMessageBroker(roomShortUuid) {
     this.client.connect(
       {
         Authorization: bearerToken,
       },
       () => {
         this.client.subscribe(
-          `${subPrefix}/chat/room/${roomId}`,
+          `${subPrefix}/chat/room/${roomShortUuid}`,
           (messageReceived) => this.receiveMessage(messageReceived),
           {
             Authorization: bearerToken,
@@ -57,7 +57,7 @@ class MessageStore {
     this.client.disconnect();
 
     this.connected = false;
-    this.currentRoomId = null;
+    this.currentRoomShortUuid = null;
     this.messageEntered = '';
     this.messageLogs = [];
     this.publish();
@@ -76,7 +76,7 @@ class MessageStore {
       client: this.client,
       type,
       messageToSend: {
-        roomShortUuid: this.currentRoomId,
+        roomShortUuid: this.currentRoomShortUuid,
         message,
       },
     });

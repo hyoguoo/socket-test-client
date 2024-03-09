@@ -3,34 +3,34 @@ import useMessageStore from '../hooks/useMessageStore';
 export default function RoomList() {
   const messageStore = useMessageStore();
 
-  const { connected, currentRoomId, roomIndices } = messageStore;
+  const { connected, currentRoomShortUuid, roomIndices } = messageStore;
 
-  const handleClickEnterRoom = ({ newRoomId }) => {
+  const handleClickEnterRoom = ({ roomShortUuid: newRoomShortUuid }) => {
     if (connected) {
-      messageStore.disconnect(currentRoomId);
+      messageStore.disconnect(currentRoomShortUuid);
     }
-    messageStore.connect(newRoomId);
+    messageStore.connect(newRoomShortUuid);
   };
 
   const handleClickQuitRoom = async () => {
-    messageStore.disconnect(currentRoomId);
+    messageStore.disconnect(currentRoomShortUuid);
   };
 
   return (
     <div>
       <ul>
-        {roomIndices.map((roomId) => (
-          <li key={roomId}>
+        {roomIndices.map((roomShortUuid) => (
+          <li key={roomShortUuid}>
             <button
               type="button"
-              disabled={roomId === currentRoomId}
+              disabled={roomShortUuid === currentRoomShortUuid}
               onClick={() =>
                 handleClickEnterRoom({
-                  previousRoomId: currentRoomId,
-                  newRoomId: roomId,
+                  previousRoomShortUuid: currentRoomShortUuid,
+                  roomShortUuid,
                 })
               }>
-              Room {roomId}
+              Room {roomShortUuid}
             </button>
           </li>
         ))}
