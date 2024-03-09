@@ -112,6 +112,18 @@ class MessageStore {
         value: `${message.memberId}: ${message.value} (${message.timestamp})`,
       };
     }
+    if (message.type === chatType.READY) {
+      return {
+        id: message.id,
+        value: `User ${message.memberId} Ready (${message.timestamp})`,
+      };
+    }
+    if (message.type === chatType.UNREADY) {
+      return {
+        id: message.id,
+        value: `User ${message.memberId} Unready (${message.timestamp})`,
+      };
+    }
     return {
       id: message.id,
       value: 'Unknown Type Message',

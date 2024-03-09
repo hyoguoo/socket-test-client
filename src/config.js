@@ -3,6 +3,8 @@ export const chatType = {
   ENTER: 'enter',
   QUIT: 'quit',
   MESSAGE: 'message',
+  READY: 'ready',
+  UNREADY: 'unready',
 };
 export const pubPrefix = '/publication';
 export const subPrefix = '/subscription';
