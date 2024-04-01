@@ -1,7 +1,8 @@
 import Stomp from 'stompjs';
 import SockJS from 'sockjs-client';
 import { messageService } from '../services/MessageService';
-import { baseUrl, bearerToken, chatType, subPrefix } from '../config';
+import { baseUrl, bearerToken, subPrefix } from '../config';
+import { chatType } from '../type/ChatType';
 
 class MessageStore {
   constructor() {

@@ -1,5 +1,6 @@
 import useMessageStore from '../hooks/useMessageStore';
-import { chatType } from '../config';
+
+import { chatType } from '../type/ChatType';
 
 export default function Room() {
   const messageStore = useMessageStore();
