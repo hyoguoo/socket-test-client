@@ -4,6 +4,6 @@ export const chatType = {
   QUIT: 'quit',
   MESSAGE: 'message',
 };
-export const pubPrefix = '/publication';
-export const subPrefix = '/subscription';
+export const pubPrefix = '/publication/chat';
+export const subPrefix = '/subscription/chat/room';
 export const bearerToken = 'Bearer your.token'; // Type your token here

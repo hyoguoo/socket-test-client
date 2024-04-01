@@ -3,7 +3,7 @@ import { bearerToken, pubPrefix } from '../config';
 class MessageService {
   sendMessage({ client, type, messageToSend }) {
     client.send(
-      `${pubPrefix}/chat/${type}`,
+      `${pubPrefix}/${type}`,
       {
         Authorization: bearerToken,
       },

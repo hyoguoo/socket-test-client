@@ -38,7 +38,7 @@ class MessageStore {
       },
       () => {
         this.client.subscribe(
-          `${subPrefix}/chat/room/${roomShortUuid}`,
+          `${subPrefix}/${roomShortUuid}`,
           (messageReceived) => this.receiveMessage(messageReceived),
           {
             Authorization: bearerToken,
