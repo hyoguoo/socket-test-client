@@ -1,7 +1,7 @@
 import Stomp from 'stompjs';
 import SockJS from 'sockjs-client';
 import { messageService } from '../services/MessageService';
-import { baseUrl, bearerToken, subPrefix } from '../config';
+import { baseUrl, bearerToken, roomIndices, subPrefix } from '../config';
 import { chatType } from '../type/ChatType';
 
 class MessageStore {
@@ -12,7 +12,7 @@ class MessageStore {
     this.client = null;
     this.connected = false;
 
-    this.roomIndices = ['c6574c0g', 'c6574c0h', 'c6574c0i'];
+    this.roomIndices = roomIndices;
 
     this.currentRoomShortUuid = 0;
     this.messageEntered = '';
