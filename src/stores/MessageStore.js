@@ -69,8 +69,7 @@ class MessageStore {
   }
 
   sendMessage({ type }) {
-    const message =
-      type === chatType.MESSAGE || type === chatType.CHANGE_HOST ? this.messageEntered : '';
+    const message = type === chatType.MESSAGE ? this.messageEntered : '';
 
     messageService.sendMessage({
       client: this.client,
@@ -108,36 +107,6 @@ class MessageStore {
       return {
         id: message.id,
         value: `${message.memberId}: ${message.value} (${message.timestamp})`,
-      };
-    }
-    if (message.type === chatType.READY) {
-      return {
-        id: message.id,
-        value: `User ${message.memberId} Ready (${message.timestamp})`,
-      };
-    }
-    if (message.type === chatType.UNREADY) {
-      return {
-        id: message.id,
-        value: `User ${message.memberId} Unready (${message.timestamp})`,
-      };
-    }
-    if (message.type === chatType.CHANGE_HOST) {
-      return {
-        id: message.id,
-        value: `User ${message.memberId} Change Host (${message.timestamp})`,
-      };
-    }
-    if (message.type === chatType.START_CODING) {
-      return {
-        id: message.id,
-        value: `User ${message.memberId} Start Coding (${message.timestamp})`,
-      };
-    }
-    if (message.type === chatType.END_CODING) {
-      return {
-        id: message.id,
-        value: `User ${message.memberId} End Coding (${message.timestamp})`,
       };
     }
     return {
